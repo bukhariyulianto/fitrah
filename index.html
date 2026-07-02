@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul Interaktif: Menemukan Fitrah Hidup</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: {
+                            50: '#ecfdf5',
+                            100: '#d1fae5',
+                            200: '#a7f3d0',
+                            300: '#6ee7b7',
+                            400: '#34d399',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                            800: '#065f46',
+                            900: '#064e3b',
+                            950: '#022c22',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome for beautiful icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .serif-title {
+            font-family: 'Playfair Display', serif;
+        }
+        /* Custom scrollbar for beautiful dashboard */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(16, 185, 129, 0.3);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(16, 185, 129, 0.5);
+        }
+        /* Page flip effect classes */
+        .fade-enter {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        .fade-enter-active {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 300ms ease-out, transform 300ms ease-out;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-emerald-900 text-emerald-100 text-xs py-2 px-4 text-center font-medium tracking-wide flex items-center justify-center gap-2">
+        <span class="inline-flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>MODUL INTERAKTIF FITRAH: "HIDUP BUKAN SEKADAR BERTAHAN, TETAPI MENUJU ALLAH"</span>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="bg-emerald-600 text-white p-2 rounded-xl shadow-lg shadow-emerald-600/20 flex items-center justify-center">
+                    <i class="fa-solid fa-seedling text-lg animate-bounce"></i>
+                </div>
+                <div>
+                    <h1 class="text-md sm:text-lg font-bold tracking-tight bg-gradient-to-r from-emerald-600 to-teal-500 bg-clip-text text-transparent dark:from-emerald-400">
+                        Rihlah Fitrah
+                    </h1>
+                    <p class="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium">Islamic Lifepath Navigator</p>
+                </div>
+            </div>
+
+            <!-- Audio & Theme controls -->
+            <div class="flex items-center gap-2">
+                <!-- Sound toggle -->
+                <button id="toggle-sound" class="p-2 rounded-xl text-slate-500 hover:text-emerald-600 hover:bg-slate-100 dark:text-slate-400 dark:hover:text-emerald-400 dark:hover:bg-slate-800 transition-all" title="Aktifkan/Bisukan Efek Suara">
+                    <i id="sound-icon" class="fa-solid fa-volume-high text-md"></i>
+                </button>
+                <!-- Dark mode toggle -->
+                <button id="toggle-dark" class="p-2 rounded-xl text-slate-500 hover:text-emerald-600 hover:bg-slate-100 dark:text-slate-400 dark:hover:text-emerald-400 dark:hover:bg-slate-800 transition-all" title="Ganti Tema">
+                    <i id="theme-icon" class="fa-solid fa-moon text-md"></i>
+                </button>
+                <!-- Quick links -->
+                <a href="#section-quiz" class="hidden md:inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-xl text-xs font-semibold shadow-md transition-all">
+                    <i class="fa-solid fa-graduation-cap"></i> Mulai Kuis
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Hero Banner -->
+    <section class="relative overflow-hidden bg-gradient-to-b from-emerald-50/50 via-white to-transparent dark:from-emerald-950/20 dark:via-slate-950 dark:to-transparent py-10 px-4">
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 dark:bg-emerald-900/40 text-emerald-800 dark:text-emerald-300 mb-6">
+                <i class="fa-solid fa-book-open text-[10px]"></i> Panduan Belajar Kaffah & Praktis
+            </span>
+            <h2 class="serif-title text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight mb-4">
+                Menemukan <span class="bg-gradient-to-r from-emerald-600 to-teal-500 bg-clip-text text-transparent dark:from-emerald-400">Fitrah Hidup</span>
+            </h2>
+            <p class="text-sm sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
+                "Hidup bukan sekadar bertahan secara biologis, tetapi perjalanan pulang yang berkesadaran menuju Sang Pencipta."
+            </p>
+            
+            <!-- Quick Progress Board -->
+            <div class="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl mx-auto">
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-3 rounded-2xl shadow-sm text-center">
+                    <span class="block text-xl font-bold text-emerald-600 dark:text-emerald-400" id="progress-chapters">0/11</span>
+                    <span class="text-[11px] text-slate-500 dark:text-slate-400">Bagian Dibaca</span>
+                </div>
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-3 rounded-2xl shadow-sm text-center">
+                    <span class="block text-xl font-bold text-emerald-600 dark:text-emerald-400" id="progress-reflections">0/11</span>
+                    <span class="text-[11px] text-slate-500 dark:text-slate-400">Refleksi Diisi</span>
+                </div>
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-3 rounded-2xl shadow-sm text-center">
+                    <span class="block text-xl font-bold text-emerald-600 dark:text-emerald-400" id="progress-quiz">Belum</span>
+                    <span class="text-[11px] text-slate-500 dark:text-slate-400">Status Kuis</span>
+                </div>
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-3 rounded-2xl shadow-sm text-center">
+                    <span class="block text-xl font-bold text-emerald-600 dark:text-emerald-400" id="overall-status">Mulai</span>
+                    <span class="text-[11px] text-slate-500 dark:text-slate-400">Perkembangan</span>
+                </div>
+            </div>
+        </div>
+        <!-- Decorative bg blur circles -->
+        <div class="absolute top-10 left-1/2 -translate-x-1/2 w-[350px] h-[350px] bg-emerald-500/10 dark:bg-emerald-400/5 rounded-full blur-3xl pointer-events-none"></div>
+    </section>
+
+    <!-- Main Layout Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- SIDEBAR: Navigation list & Tree widget (4 cols on large screens) -->
+        <aside class="lg:col-span-4 space-y-6">
+            
+            <!-- Quick Progress Tracker Visual -->
+            <div class="bg-white dark:bg-slate-900 p-5 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm mb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-route text-emerald-500"></i> Alur Perjalanan Hijrah
+                </h3>
+                <div class="h-2 w-full bg-slate-100 dark:bg-slate-850 rounded-full overflow-hidden mb-4">
+                    <div id="visual-progress-bar" class="h-full bg-gradient-to-r from-emerald-500 to-teal-400 w-0 transition-all duration-500"></div>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed" id="progress-advice">
+                    Mulailah perjalanan spiritual Anda dengan mengklik Bagian 1 di bawah ini.
+                </p>
+            </div>
+
+            <!-- Interactive Chapters Sidebar Navigation -->
+            <div class="bg-white dark:bg-slate-900 p-5 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-list-ol text-emerald-500"></i> Daftar Bagian Ilmu
+                </h3>
+                <div class="space-y-2 max-h-[420px] overflow-y-auto pr-1" id="chapters-nav-list">
+                    <!-- Dynamic rendering via JS -->
+                </div>
+            </div>
+
+            <!-- Dynamic Feature: Interactive Tree of Fitrah (Visual Widget) -->
+            <div class="bg-white dark:bg-slate-900 p-5 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm text-center">
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm mb-1 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-tree text-emerald-600"></i> Visualisasi Pohon Fitrah
+                </h3>
+                <p class="text-[11px] text-slate-400 dark:text-slate-450 mb-4">Klik setiap bagian pohon untuk berinteraksi!</p>
+                
+                <div class="relative w-full max-w-[260px] mx-auto aspect-square bg-slate-50 dark:bg-slate-950 rounded-2xl p-4 border border-slate-150 dark:border-slate-850 flex flex-col justify-between overflow-hidden">
+                    
+                    <!-- Interactive Fruit Area -->
+                    <button id="tree-fruit-btn" class="relative z-10 mx-auto px-4 py-1.5 bg-red-100 dark:bg-red-950/40 border border-red-200 dark:border-red-900/60 text-red-700 dark:text-red-400 rounded-full text-xs font-bold hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5 shadow-sm">
+                        <span class="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-red-400 opacity-75"></span>
+                        🍎 BUAH: Manfaat & Umat
+                    </button>
+
+                    <!-- Interactive Leaves/Branches Area -->
+                    <button id="tree-leaves-btn" class="relative z-10 mx-auto px-4 py-1.5 bg-green-100 dark:bg-green-950/45 border border-green-200 dark:border-green-900/60 text-green-700 dark:text-green-450 rounded-full text-xs font-bold hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5 shadow-sm">
+                        🌿 DAUN: Akhlak Mulia
+                    </button>
+
+                    <!-- Interactive Trunk Area -->
+                    <button id="tree-trunk-btn" class="relative z-10 mx-auto px-4 py-1.5 bg-amber-100 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/60 text-amber-700 dark:text-amber-400 rounded-full text-xs font-bold hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5 shadow-sm">
+                        🪵 BATANG: Ibadah & Syariat
+                    </button>
+
+                    <!-- Interactive Roots Area -->
+                    <button id="tree-roots-btn" class="relative z-10 mx-auto px-4 py-1.5 bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-350 rounded-full text-xs font-bold hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5 shadow-sm">
+                        🟤 AKAR: Aqidah & Tauhid
+                    </button>
+
+                    <!-- Tree background trunk graphic representation (SVGs/Pure CSS styling helper) -->
+                    <div class="absolute inset-x-0 bottom-0 top-12 flex justify-center pointer-events-none opacity-10">
+                        <i class="fa-solid fa-tree text-[150px] text-emerald-800"></i>
+                    </div>
+                </div>
+
+                <!-- Tree explain card -->
+                <div id="tree-explain-box" class="mt-4 p-3.5 bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900/30 rounded-2xl text-left">
+                    <p class="text-xs font-bold text-emerald-800 dark:text-emerald-300 flex items-center gap-1">
+                        <i class="fa-solid fa-circle-info"></i> Klik bagian pohon di atas!
+                    </p>
+                    <p class="text-[11px] text-slate-650 dark:text-slate-350 mt-1">
+                        Dapatkan analogi filosofis kaffah dari masing-masing organ pohon terhadap peradaban iman manusia.
+                    </p>
+                </div>
+            </div>
+
+        </aside>
+
+        <!-- MAIN MODULE CONTENT: Dynamic Viewer & Muhasabah (8 cols on large screens) -->
+        <section class="lg:col-span-8 space-y-6">
+            
+            <!-- Module Content Card -->
+            <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm relative">
+                
+                <!-- Slide Header details -->
+                <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                    <div class="flex items-center gap-2">
+                        <span id="badge-chapter-num" class="px-2.5 py-1 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 rounded-lg text-xs font-bold">
+                            BAGIAN 1
+                        </span>
+                        <span class="text-[11px] text-slate-450 flex items-center gap-1">
+                            <i class="fa-solid fa-clock"></i> <span id="read-time-est">3 mnt baca</span>
+                        </span>
+                    </div>
+                    <div class="flex items-center gap-1.5">
+                        <button id="prev-chapter-btn" class="p-2 bg-slate-50 dark:bg-slate-800 rounded-xl hover:bg-emerald-50 dark:hover:bg-slate-700 hover:text-emerald-600 transition-all text-xs" title="Bagian Sebelumnya">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+                        <span id="indicator-ratio" class="text-xs font-bold text-slate-500 dark:text-slate-400 px-1">
+                            1 / 11
+                        </span>
+                        <button id="next-chapter-btn" class="p-2 bg-slate-50 dark:bg-slate-800 rounded-xl hover:bg-emerald-50 dark:hover:bg-slate-700 hover:text-emerald-600 transition-all text-xs" title="Bagian Selanjutnya">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- DYNAMIC CONTENT HOLDER -->
+                <article id="dynamic-content-area" class="prose max-w-none text-slate-700 dark:text-slate-300 leading-relaxed text-sm sm:text-base space-y-4 fade-enter fade-enter-active">
+                    <!-- Loaded dynamically by JS -->
+                </article>
+
+                <!-- Chapter Quotes section -->
+                <div id="dynamic-quote-area" class="mt-8 p-4 bg-slate-50 dark:bg-slate-950/40 border-l-4 border-emerald-500 rounded-r-2xl italic text-xs sm:text-sm text-slate-600 dark:text-slate-350">
+                    <!-- Dynamic Quotes loaded here -->
+                </div>
+
+                <!-- Interactive Card: Reflection/Muhasabah Box per Chapter -->
+                <div class="mt-10 pt-6 border-t border-slate-100 dark:border-slate-800">
+                    <div class="bg-gradient-to-r from-emerald-50/50 to-teal-50/50 dark:from-slate-950 dark:to-slate-950 p-5 rounded-2xl border border-emerald-100/60 dark:border-slate-800 relative overflow-hidden">
+                        
+                        <div class="flex items-center gap-2 mb-3">
+                            <div class="p-1.5 bg-emerald-600 text-white rounded-lg text-xs">
+                                <i class="fa-solid fa-pen-nib"></i>
+                            </div>
+                            <h4 class="font-bold text-sm text-slate-900 dark:text-white">
+                                Lembar Muhasabah Mandiri (Refleksi)
+                            </h4>
+                        </div>
+                        
+                        <p class="text-xs text-slate-600 dark:text-slate-350 mb-4 leading-relaxed" id="reflection-prompt">
+                            <!-- Prompts loaded by JS -->
+                        </p>
+
+                        <textarea id="reflection-input" rows="3" class="w-full p-3 text-xs bg-white dark:bg-slate-900 border border-slate-250 dark:border-slate-800 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent dark:text-slate-100 transition-all placeholder:text-slate-400" placeholder="Tuliskan komitmen atau refleksi jujur dari hati Anda di sini..."></textarea>
+                        
+                        <div class="flex items-center justify-between mt-3">
+                            <span id="reflection-status" class="text-[10px] font-semibold text-emerald-600 dark:text-emerald-450 flex items-center gap-1 opacity-0 transition-opacity">
+                                <i class="fa-solid fa-circle-check"></i> Refleksi tersimpan lokal!
+                            </span>
+                            <button id="save-reflection-btn" class="bg-slate-900 hover:bg-slate-850 dark:bg-emerald-600 dark:hover:bg-emerald-700 text-white px-4 py-2 rounded-xl text-xs font-semibold transition-all shadow-sm flex items-center gap-1.5">
+                                <i class="fa-solid fa-floppy-disk"></i> Simpan Refleksi
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation bottom indicators -->
+                <div class="flex items-center justify-between mt-8">
+                    <button id="prev-chapter-bottom-btn" class="text-xs font-semibold text-slate-500 hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-450 transition-all flex items-center gap-1">
+                        <i class="fa-solid fa-arrow-left"></i> Bagian Sebelumnya
+                    </button>
+                    <button id="next-chapter-bottom-btn" class="bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-550 dark:hover:bg-emerald-650 text-white px-5 py-2.5 rounded-xl text-xs font-bold transition-all shadow-md shadow-emerald-600/10 flex items-center gap-1.5">
+                        Lanjutkan Membaca <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- THE INTERACTIVE QUIZ SECTION -->
+            <div id="section-quiz" class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden scroll-mt-20">
+                <div class="absolute -right-12 -top-12 w-40 h-40 bg-emerald-500/10 dark:bg-emerald-500/5 rounded-full blur-2xl pointer-events-none"></div>
+                
+                <!-- Quiz Pre-Start Screen -->
+                <div id="quiz-intro-box" class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="bg-emerald-100 dark:bg-emerald-950 p-2.5 rounded-2xl text-emerald-700 dark:text-emerald-400">
+                            <i class="fa-solid fa-graduation-cap text-2xl"></i>
+                        </div>
+                        <div>
+                            <span class="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest">Uji Pemahaman</span>
+                            <h3 class="serif-title text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
+                                Kuis Fitrah Hidup & Kaffah
+                            </h3>
+                        </div>
+                    </div>
+
+                    <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-350 leading-relaxed">
+                        Uji seberapa dalam Anda memahami keselarasan konsep Fitrah, Aqidah, Ibadah, Nafs, dan Peran Sosial Kaffah. Dapatkan umpan balik interaktif dengan analisis terperinci.
+                    </p>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
+                        <div class="p-3 bg-slate-50 dark:bg-slate-950 border border-slate-150 dark:border-slate-850 rounded-xl flex items-center gap-2">
+                            <i class="fa-solid fa-list-check text-emerald-500 text-sm"></i>
+                            <div class="text-[11px]">
+                                <span class="block font-bold text-slate-800 dark:text-slate-200">10 Pertanyaan</span>
+                                <span class="text-slate-450">Konseptual & Analitik</span>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-slate-50 dark:bg-slate-950 border border-slate-150 dark:border-slate-850 rounded-xl flex items-center gap-2">
+                            <i class="fa-solid fa-award text-emerald-500 text-sm"></i>
+                            <div class="text-[11px]">
+                                <span class="block font-bold text-slate-800 dark:text-slate-200">Sertifikat Digital</span>
+                                <span class="text-slate-450">Batas kelulusan 70%</span>
+                            </div>
+                        </div>
+                        <div class="col-span-2 sm:col-span-1 p-3 bg-slate-50 dark:bg-slate-950 border border-slate-150 dark:border-slate-850 rounded-xl flex items-center gap-2">
+                            <i class="fa-solid fa-volume-high text-emerald-500 text-sm"></i>
+                            <div class="text-[11px]">
+                                <span class="block font-bold text-slate-800 dark:text-slate-200">Efek Suara Aktif</span>
+                                <span class="text-slate-450">Audio Sintetis</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 flex justify-end">
+                        <button id="start-quiz-btn" class="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-550 dark:hover:bg-emerald-650 text-white px-8 py-3.5 rounded-2xl text-xs font-bold transition-all shadow-lg shadow-emerald-600/10 flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-play"></i> Mulai Kuis Fitrah Sekarang
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Quiz Interactive Active Area -->
+                <div id="quiz-active-box" class="hidden space-y-6">
+                    <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-850 pb-4">
+                        <span id="quiz-question-counter" class="text-xs font-bold text-slate-500 dark:text-slate-400">
+                            PERTANYAAN 1 DARI 10
+                        </span>
+                        <div class="flex items-center gap-2">
+                            <span class="h-2 w-32 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                                <span id="quiz-progress-indicator" class="h-full bg-emerald-500 block" style="width: 10%;"></span>
+                            </span>
+                            <span id="quiz-score-indicator" class="text-xs font-bold text-emerald-600 dark:text-emerald-400">Skor: 0</span>
+                        </div>
+                    </div>
+
+                    <!-- Question Container -->
+                    <div class="space-y-4">
+                        <h4 id="quiz-question-text" class="text-sm sm:text-base font-bold text-slate-900 dark:text-white leading-relaxed">
+                            Loading question...
+                        </h4>
+                        
+                        <!-- Options Wrapper -->
+                        <div id="quiz-options-wrapper" class="grid grid-cols-1 gap-3 pt-2">
+                            <!-- Dynamic rendering of options -->
+                        </div>
+                    </div>
+
+                    <!-- Explanation/Rationale Overlay Card -->
+                    <div id="quiz-rationale-box" class="hidden p-4 bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900/30 rounded-2xl space-y-2 animate-fade-in">
+                        <div class="flex items-center gap-2 text-xs font-bold" id="quiz-rational-status">
+                            <i class="fa-solid fa-circle-check text-emerald-500"></i> Jawaban Benar!
+                        </div>
+                        <p id="quiz-rationale-text" class="text-xs text-slate-650 dark:text-slate-350 leading-relaxed">
+                            Loading explanation...
+                        </p>
+                    </div>
+
+                    <!-- Next Question trigger -->
+                    <div class="flex justify-end pt-2">
+                        <button id="quiz-next-question-btn" disabled class="w-full sm:w-auto bg-slate-200 dark:bg-slate-800 text-slate-500 dark:text-slate-400 disabled:opacity-50 px-6 py-3 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1">
+                            Lanjutkan <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Quiz Results & Certificate Display Screen -->
+                <div id="quiz-result-box" class="hidden text-center space-y-6">
+                    <div class="max-w-md mx-auto space-y-3">
+                        <div id="result-medal-icon" class="text-5xl text-amber-500 animate-bounce">
+                            <i class="fa-solid fa-medal"></i>
+                        </div>
+                        <h3 class="serif-title text-2xl font-bold text-slate-900 dark:text-white" id="result-title">
+                            Barakallah, Luar Biasa!
+                        </h3>
+                        <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed" id="result-description">
+                            Anda telah menuntaskan seluruh pembelajaran modul dan kuis dengan hasil memuaskan.
+                        </p>
+                    </div>
+
+                    <!-- Score Wheel -->
+                    <div class="inline-flex flex-col items-center justify-center bg-slate-50 dark:bg-slate-950 p-6 rounded-3xl border border-slate-150 dark:border-slate-850">
+                        <span class="block text-4xl sm:text-5xl font-extrabold text-emerald-600 dark:text-emerald-400" id="result-score-number">90/100</span>
+                        <span class="text-xs text-slate-450 uppercase tracking-widest mt-1">Skor Kuis Anda</span>
+                    </div>
+
+                    <!-- Custom Shareable Certificate Card (Visual) -->
+                    <div class="border-2 border-dashed border-emerald-300 dark:border-emerald-800 p-6 sm:p-8 rounded-3xl bg-emerald-50/20 dark:bg-slate-950 max-w-xl mx-auto text-center space-y-4 relative">
+                        <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-emerald-600 text-white px-4 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase">
+                            Sertifikat Digital kelulusan
+                        </div>
+                        <h4 class="serif-title text-md sm:text-xl font-bold tracking-wider text-slate-800 dark:text-slate-200 uppercase mt-4">
+                            Syahadah At-Tashdiq
+                        </h4>
+                        <p class="text-[11px] text-slate-500 dark:text-slate-400">Diberikan secara terhormat kepada pembelajar sejati:</p>
+                        
+                        <!-- Editable Name for Certification -->
+                        <div class="max-w-xs mx-auto border-b border-slate-400 pb-1">
+                            <input type="text" id="cert-user-name" class="w-full text-center bg-transparent border-none text-slate-850 dark:text-white font-bold italic text-base focus:outline-none placeholder:text-slate-400 placeholder:normal-case" placeholder="[Ketik Nama Lengkap Anda]">
+                        </div>
+
+                        <p class="text-[11px] text-slate-600 dark:text-slate-350 leading-relaxed px-4">
+                            Telah bersungguh-sungguh mentadabburi materi <strong class="text-emerald-700 dark:text-emerald-400">Rihlah Fitrah Hidup: Menuju Allah Kaffah</strong> dan lulus ujian evaluasi interaktif dengan hasil sangat terpuji.
+                        </p>
+                        <div class="pt-2 flex justify-between items-center text-[10px] text-slate-400 dark:text-slate-500">
+                            <span>Sistem Digital: Rihlah Fitrah</span>
+                            <span id="cert-date-string">Juli, 2026</span>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-4">
+                        <button id="copy-cert-text" class="w-full sm:w-auto bg-slate-950 hover:bg-slate-850 dark:bg-slate-800 dark:hover:bg-slate-700 text-white px-5 py-3 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 shadow-sm">
+                            <i class="fa-solid fa-copy"></i> Salin Teks Syahadah
+                        </button>
+                        <button id="reset-quiz-btn" class="w-full sm:w-auto border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-850 text-slate-700 dark:text-slate-300 px-5 py-3 rounded-xl text-xs font-semibold transition-all flex items-center justify-center gap-1.5">
+                            <i class="fa-solid fa-rotate-right"></i> Ulangi Kuis
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Interactive Toast Modal Alert System -->
+    <div id="toast-modal" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 flex items-center gap-3 bg-slate-900 text-white px-5 py-4 rounded-2xl shadow-xl border border-slate-800">
+        <i class="fa-solid fa-circle-check text-emerald-500 text-lg" id="toast-icon"></i>
+        <div class="text-xs">
+            <span class="block font-bold" id="toast-title">Refleksi Disimpan</span>
+            <span class="text-slate-400" id="toast-message">Jurnal spiritual Anda berhasil tersimpan dalam memori browser.</span>
+        </div>
+    </div>
+
+    <!-- DATA & INTERACTIVE LOGIC SCRIPT -->
+    <script>
+        // WEB AUDIO API Sfx Synth (Sfx Generator without external assets)
+        const AudioSynth = {
+            ctx: null,
+            enabled: true,
+
+            init() {
+                try {
+                    this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+                } catch (e) {
+                    console.warn("Web Audio API not supported", e);
+                }
+            },
+
+            playClick() {
+                if (!this.enabled || !this.ctx) return;
+                this.resumeCtx();
+                
+                let osc = this.ctx.createOscillator();
+                let gain = this.ctx.createGain();
+                
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(300, this.ctx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(1200, this.ctx.currentTime + 0.08);
+                
+                gain.gain.setValueAtTime(0.08, this.ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.08);
+                
+                osc.connect(gain);
+                gain.connect(this.ctx.destination);
+                osc.start();
+                osc.stop(this.ctx.currentTime + 0.08);
+            },
+
+            playSuccess() {
+                if (!this.enabled || !this.ctx) return;
+                this.resumeCtx();
+                
+                const now = this.ctx.currentTime;
+                // Double note beautiful chime
+                [523.25, 659.25, 783.99].forEach((freq, idx) => {
+                    let osc = this.ctx.createOscillator();
+                    let gain = this.ctx.createGain();
+                    
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(freq, now + (idx * 0.08));
+                    
+                    gain.gain.setValueAtTime(0.0, now + (idx * 0.08));
+                    gain.gain.linearRampToValueAtTime(0.12, now + (idx * 0.08) + 0.02);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + (idx * 0.08) + 0.3);
+                    
+                    osc.connect(gain);
+                    gain.connect(this.ctx.destination);
+                    osc.start(now + (idx * 0.08));
+                    osc.stop(now + (idx * 0.08) + 0.3);
+                });
+            },
+
+            playError() {
+                if (!this.enabled || !this.ctx) return;
+                this.resumeCtx();
+                
+                let osc = this.ctx.createOscillator();
+                let gain = this.ctx.createGain();
+                
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(180, this.ctx.currentTime);
+                osc.frequency.linearRampToValueAtTime(110, this.ctx.currentTime + 0.18);
+                
+                gain.gain.setValueAtTime(0.1, this.ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.2);
+                
+                osc.connect(gain);
+                gain.connect(this.ctx.destination);
+                osc.start();
+                osc.stop(this.ctx.currentTime + 0.2);
+            },
+
+            playWin() {
+                if (!this.enabled || !this.ctx) return;
+                this.resumeCtx();
+                
+                // Arpeggio chord reward
+                const notes = [523.25, 659.25, 783.99, 1046.50];
+                const now = this.ctx.currentTime;
+                notes.forEach((freq, i) => {
+                    let osc = this.ctx.createOscillator();
+                    let gain = this.ctx.createGain();
+                    
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(freq, now + i * 0.15);
+                    
+                    gain.gain.setValueAtTime(0.0, now + i * 0.15);
+                    gain.gain.linearRampToValueAtTime(0.15, now + i * 0.15 + 0.05);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.15 + 0.6);
+                    
+                    osc.connect(gain);
+                    gain.connect(this.ctx.destination);
+                    osc.start(now + i * 0.15);
+                    osc.stop(now + i * 0.15 + 0.6);
+                });
+            },
+
+            resumeCtx() {
+                if (this.ctx && this.ctx.state === 'suspended') {
+                    this.ctx.resume();
+                }
+            }
+        };
+
+        // Complete 11 chapters data matching FITRAH.txt
+        const chaptersData = [
+            {
+                num: 1,
+                title: "Sebenarnya Kita Sedang Mengejar Apa?",
+                readTime: "3 mnt baca",
+                quote: `"Dunia hanyalah kendaraan menuju akhirat. Jangan sibuk menghias kendaraan hingga lupa tujuan perjalanan."`,
+                prompt: "Tuliskan apa target duniawi terbesar Anda saat ini, lalu renungkan secara jujur: apakah pencapaian target tersebut otomatis mendekatkan Anda kepada Allah?",
+                content: `
+                    <p class="font-semibold text-emerald-800 dark:text-emerald-400">Pertanyaan penentu seluruh arah kehidupan seseorang: "Kita nih sebenarnya lagi mengejar apa sih?"</p>
+                    <p>Banyak manusia hidup puluhan tahun dalam kesibukan luar biasa—sekolah, kuliah, karir, pernikahan, menumpuk harta, mengejar jabatan, mengumpulkan pengakuan publik—namun hampir tidak pernah berhenti untuk bertanya untuk apa semua ini dikerjakan.</p>
+                    
+                    <div class="bg-slate-50 dark:bg-slate-950 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 flex gap-3 my-4">
+                        <div class="text-2xl text-emerald-600"><i class="fa-solid fa-car-side"></i></div>
+                        <div>
+                            <strong class="block text-xs uppercase text-slate-500">Analogi GPS</strong>
+                            <p class="text-xs mt-1">Seseorang mengendarai mobil super mewah ber-GPS canggih dan tangki bensin penuh, tetapi ia sama sekali tidak memasukkan titik tujuan. Mobil terus berputar-putar tanpa arah sampai bensinnya habis. Begitulah potret kehidupan manusia modern yang sibuk melaju tetapi buta tujuan.</p>
+                        </div>
+                    </div>
+
+                    <p>Allah ﷻ telah menegaskan tujuan mutlak penciptaan kita dalam QS. Adz-Dzariyat ayat 56:</p>
+                    <blockquote class="border-l-4 border-emerald-500 pl-4 my-2 italic font-serif">"Aku tidak menciptakan jin dan manusia melainkan agar mereka beribadah kepada-Ku."</blockquote>
+                    <p>Dalam Islam kaffah, definisi ibadah tidak boleh dipersempit sebatas ritual (shalat, dzikir, puasa). Seluruh denyut kehidupan mukmin—bekerja, mengurus keluarga, berinteraksi sosial—adalah ibadah holistik yang dinilai dari niat lurus mencari keridhaan Allah.</p>
+                    <p class="mt-2"><strong>Islam Menggeser Tolok Ukur Sukses:</strong> Sukses versi dunia diukur dengan harta melimpah, popularitas tinggi, dan status sosial. Sementara Islam mengukur sukses dengan satu parameter mendasar: <em>Apakah kehidupan kita hari ini membuat kita semakin dekat dengan Allah?</em></p>
+                `
+            },
+            {
+                num: 2,
+                title: "Fitrah Manusia: Mengapa Kita Bukan Kertas Kosong?",
+                readTime: "4 mnt baca",
+                quote: `"Fitrah bukan sesuatu yang harus diciptakan, tetapi sesuatu yang harus dijaga."`,
+                prompt: "Coba amati kebiasaan sehari-hari Anda di rumah. Kebiasaan apa yang sering dilihat oleh keluarga yang mencerminkan upaya Anda menjaga fitrah iman?",
+                content: `
+                    <p class="font-semibold text-emerald-800 dark:text-emerald-400">"Kita lahir tidak dengan kertas kosong (tabula rasa), melainkan lahir ibarat berada di tanah yang sangat subur. Itulah fitrah."</p>
+                    <p><strong>Fitrah</strong> secara bahasa bermakna membelah, memulai penciptaan, atau mendesain sesuatu sesuai cetakan aslinya (QS. Ar-Rum: 30). Manusia telah dilengkapi oleh Allah dengan "software bawaan" yang siap menerima tauhid dan cinta kebaikan sejak pertama kali lahir.</p>
+                    
+                    <div class="bg-slate-50 dark:bg-slate-950 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 flex gap-3 my-4">
+                        <div class="text-2xl text-emerald-600"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                        <div>
+                            <strong class="block text-xs uppercase text-slate-500">Analogi Smartphone Baru</strong>
+                            <p class="text-xs mt-1">Sistem operasi, kamera canggih, dan baterai telah terpasang dengan sempurna di dalam box. Namun virus digital, sampah memori, dan pemakaian serampangan merusak performa optimalnya. Begitulah jiwa manusia yang dikotori dosa dan syahwat menyimpang.</p>
+                        </div>
+                    </div>
+
+                    <p>Hadis riwayat Al-Bukhari dan Muslim menegaskan: <em>"Setiap anak dilahirkan di atas fitrah, kemudian kedua orang tuanyalah yang menjadikannya Yahudi, Nasrani, atau Majusi."</em> Fitrah adalah potensi kesalehan yang siap tumbuh jika dipupuk dengan benar.</p>
+                    <p class="mt-2"><strong>Analogi Tanah Subur:</strong> Jika tanah subur dibiarkan kosong tanpa ditanami padi atau bunga indah, maka rumput liar yang merusak akan tumbuh dengan sendirinya. Demikian pula hati manusia; tanpa tarbiyah Islamiah yang intensif, jiwa akan otomatis diinvasi oleh materialisme, hedonisme, dan kesombongan ego.</p>
+                `
+            },
+            {
+                num: 3,
+                title: "Hidayah, Ujian, & Skenario Takdir Yang Misterius",
+                readTime: "4 mnt baca",
+                quote: `"Banyak jalan yang kita anggap buntu ternyata adalah jalan yang Allah belokkan menuju kebaikan yang lebih besar."`,
+                prompt: "Ingatlah satu kegagalan menyakitkan di masa lalu Anda. Hikmah besar apa yang baru Anda sadari di kemudian hari dari skenario pembelokan takdir tersebut?",
+                content: `
+                    <p class="font-semibold text-emerald-800 dark:text-emerald-400">"Aku ingin ke kiri, tetapi Allah seperti berkata: 'Tidak, kamu harus ke kanan.'"</p>
+                    <p>Rencana hidup manusia hanyalah ikhtiar kecil, sedangkan takdir sejati berada penuh di tangan Allah. Pandangan manusia sangat dangkal dan terbatas, sedangkan ilmu Allah meliputi dimensi masa kini dan masa depan (QS. Al-Baqarah: 216).</p>
+                    
+                    <div class="bg-slate-50 dark:bg-slate-950 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 flex gap-3 my-4">
+                        <div class="text-2xl text-emerald-600"><i class="fa-solid fa-compass"></i></div>
+                        <div>
+                            <strong class="block text-xs uppercase text-slate-500">Analogi Sopir & Penumpang</strong>
+                            <p class="text-xs mt-1">Penumpang sering kesal ketika sopir yang berpengetahuan mendadak memutar jauh menghindari jalan pintas. Penumpang tidak tahu bahwa di jalan pintas itu sedang terjadi longsor mematikan. Allah adalah sebaik-baik pengatur yang menyelamatkan kita melalui rute yang tak terduga.</p>
+                        </div>
+                    </div>
+
+                    <p>Ujian fisik seperti cedera saraf terjepit yang menimpa Teh Konit tampak sebagai musibah duniawi. Namun, justru dari keterbatasan fisik itulah Allah menghentikan ambisi organisasi pecinta alamnya, membelokkan arah hidupnya untuk dekat dengan majelis ilmu, sirah, hingga akhirnya tumbuh menjadi seorang penulis dan aktivis dakwah.</p>
+                    <p class="mt-2">Hidayah sering kali datang bukan di saat nyaman, melainkan di balik reruntuhan ego saat ditimpa kehilangan, sakit, bangkrut, atau kekecewaan mendalam terhadap makhluk. Saat itulah hati tersungkur dan bersandar murni hanya kepada Allah.</p>
+                `
+            },
+            {
+                num: 4,
+                title: "Sirah Nabawiyah Bukan Sejarah, tapi Peta Kehidupan",
+                readTime: "4 mnt baca",
+                quote: `"Sirah bukan museum sejarah. Sirah adalah peta perjalanan praktis menuju ridha Allah."`,
+                prompt: "Saat Anda merasa cemas, sedih, atau merasa dikhianati, kisah perjuangan Rasulullah ﷺ bagian mana yang paling memotivasi Anda untuk tetap kuat?",
+                content: `
+                    <p class="font-semibold text-emerald-800 dark:text-emerald-400">"Dalam setiap denyut langkah Rasulullah ﷺ, selalu ada solusi konkret bagi problematika kehidupan modern hari ini."</p>
+                    <p>Umat Islam sering kali keliru mempelajari Sirah Nabawiyah sekadar hapalan kronologi perang dan angka tahun sejarah. Padahal Allah menetapkan beliau sebagai uswatun hasanah (QS. Al-Ahzab: 21) agar perjuangannya diteladani sebagai metodologi penyelesaian masalah kehidupan.</p>
+                    
+                    <div class="bg-slate-50 dark:bg-slate-950 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 flex gap-3 my-4">
+                        <div class="text-2xl text-emerald-600"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                        <div>
+                            <strong class="block text-xs uppercase text-slate-505">Analogi Kotak Perkakas</strong>
+                            <p class="text-xs mt-1">Seorang tukang menggunakan palu, obeng, atau kunci inggris sesuai dengan kerusakan spesifik yang ia temui. Sirah Nabawiyah adalah kotak perkakas spiritual lengkap. Saat sedih, bacalah Amul Huzn. Saat dihina, belajarlah dari peristiwa Thaif. Saat cemas rezeki, tadabburi lapar beliau di Madinah.</p>
+                        </div>
+                    </div>
+
+                    <p>Tugas mulia yang diterima Teh Konit dari gurunya untuk membaca 10 halaman sirah setiap hari lalu menghubungkannya dengan masalah aktual anak muda adalah rahasia transformasi jiwa yang dahsyat. Sirah melatih otak kita untuk berpikir dengan paradigma nubuat dalam menjawab krisis emosi, konflik keluarga, kepemimpinan, hingga dakwah global.</p>
+                `
+            },
+            {
+                num: 5,
+                title: "Hidup Bukan Tentang Diri Sendiri, tetapi Manfaat Bagi Umat",
+                readTime: "4 mnt baca",
+                quote: `"Orang yang hidup hanya untuk dirinya akan merasa hidupnya selalu kurang. Orang yang hidup untuk Allah akan selalu menemukan alasan untuk bersyukur."`,
+                prompt: "Sebutkan satu bentuk kontribusi sosial kecil yang paling mungkin Anda lakukan minggu ini di lingkungan rumah atau tempat kerja demi kemaslahatan sesama.",
+                content: `
+                    <p class="font-semibold text-emerald-800 dark:text-emerald-400">"Perubahan paradigma terbesar terjadi saat kita menyadari bahwa kehidupan tidak berputar di sekeliling ego egois kita."</p>
+                    <p>Zaman modern mendesain kita hidup dalam penjara ego ("Aku ingin kaya", "Aku ingin dipuji"). Algoritma media sosial terus memperbesar ilusi self-centered melalui flexing dan pamer pencapaian pribadi. Islam datang membebaskan kita dari penjara tersebut dengan menggeser poros kehidupan murni kepada Allah.</p>
+                    
+                    <div class="bg-slate-50 dark:bg-slate-950 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 flex gap-3 my-4">
+                        <div class="text-2xl text-emerald-600"><i class="fa-solid fa-sun"></i></div>
+                        <div>
+                            <strong class="block text-xs uppercase text-slate-505">Analogi Tata Surya</strong>
+                            <p class="text-xs mt-1">Jika semua planet berambisi menjadi pusat orbit, tabrakan dahsyat yang merusak tak terhindarkan. Tata surya menjadi indah karena semua planet patuh mengitari Matahari sebagai pusat. Ketika Allah menjadi pusat hidup, uang, karir, dan takdir kita akan mengorbit dalam keselarasan.</p>
+                        </div>
+                    </div>
+
+                    <p>Kisah pertemuan di perbatasan Turki dengan Uncle Syaukat (kakek 84 tahun berjiwa baja yang menangisi ketidakmampuannya berjihad di Palestina) membongkar kelemahan iman kita. Di saat fisik renta memikirkan kontribusi umat, banyak dari kita yang muda hanya sibuk mengeluhkan kopi dingin atau Wi-Fi yang lambat. Ingat sabda Nabi ﷺ: <em>"Sebaik-baik manusia adalah yang paling bermanfaat bagi sesamanya."</em></p>
+                `
+            },
+            {
+                num: 6,
+                title: "Analogi Pohon Fitrah: Mengapa Ada yang Religius tapi Tidak Berbuah?",
+                readTime: "4 mnt baca",
+                quote: `"Tauhid adalah akar. Ibadah adalah batang. Akhlak adalah daun. Manfaat adalah buah. Jangan sibuk mengejar buah sambil melupakan akar."`,
+                prompt: "Tadabburi diri sendiri: Dari 4 pilar pohon iman (Aqidah, Ibadah, Akhlak, Manfaat), pilar mana yang menurut Anda membutuhkan perawatan ekstra saat ini?",
+                content: `
+                    <p class="font-semibold text-emerald-800 dark:text-emerald-400">Metode perumpamaan yang agung dari Allah ﷻ dalam QS. Ibrahim ayat 24-25 menyamakan kalimat thayyibah (iman) laksana pohon yang baik.</p>
+                    
+                    <div class="space-y-2 border-l-2 border-slate-200 dark:border-slate-800 pl-4 my-4">
+                        <p class="text-xs"><strong>① AKAR = AQIDAH (TAUHID)</strong><br>Akar tersembunyi dari pandangan orang, namun ia penentu hidup matinya seluruh organ pohon. Akar yang menancap kuat menyerap nutrisi iman dan menjaga pohon tidak tumbang saat diterjang badai ujian terberat.</p>
+                        <p class="text-xs"><strong>② BATANG = IBADAH</strong><br>Batang menyalurkan nutrisi dari akar ke atas. Shalat, dzikir, dan puasa adalah batang. Ibadah bukanlah beban bagi seorang mukmin, melainkan pengisi energi jiwa utama.</p>
+                        <p class="text-xs"><strong>③ DAUN = AKHLAK MULIA</strong><br>Daun rimbun adalah akhlak yang teduh, jujur, santun, dan menenteramkan orang lain. Akhlak adalah tanda bahwa akar aqidah dan batang ibadah tumbuh sehat.</p>
+                        <p class="text-xs"><strong>④ BUAH = MANFAAT BAGI MAKHLUK</strong><br>Inilah hasil akhir spiritualitas. Pohon buah tidak pernah memakan buahnya sendiri; buahnya murni disedekahkan untuk dinikmati makhluk lain. Mukmin sejati hidupnya murni menebar maslahat.</p>
+                    </div>
+
+                    <p>Fenomena orang yang tampak religius namun kasar, curang, atau ghibah menunjukkan cacat serius pada pertumbuhan pohon imannya. Mereka mengira bisa memotong proses demi menumbuhkan buah instan, padahal mengabaikan penyuburan akar aqidah di dalam dada.</p>
+                `
+            },
+            {
+                num: 7,
+                title: "Memahami Tiga Tingkatan Jiwa (Nafs)",
+                readTime: "4 mnt baca",
+                quote: `"Kemenangan terbesar bukan ketika kita mengalahkan orang lain, tetapi ketika kita mampu mengalahkan diri sendiri karena Allah."`,
+                prompt: "Di saat rasa malas ibadah atau dorongan bermaksiat mendadak kuat, strategi konkret apa yang Anda lakukan untuk menekan dorongan Nafs Ammarah tersebut?",
+                content: `
+                    <p class="font-semibold text-emerald-800 text-emerald-600 dark:text-emerald-400">"Perang terbesar bukanlah menaklukkan benteng musuh di luar, melainkan menundukkan ego diri di dalam dada."</p>
+                    <p>Nafs (jiwa/dorongan keinginan) tidak boleh dibunuh atau dimatikan (seperti ajaran kependetaan ekstrim), melainkan harus dididik, dilatih, dan dikendalikan setir kemudinya sesuai koridor syariat.</p>
+                    
+                    <div class="bg-slate-50 dark:bg-slate-950 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 flex gap-3 my-4">
+                        <div class="text-2xl text-emerald-600"><i class="fa-solid fa-gauge-high"></i></div>
+                        <div>
+                            <strong class="block text-xs uppercase text-slate-505">Analogi Kendaraan Mobil</strong>
+                            <p class="text-xs mt-1">Mesin mobil yang bertenaga besar adalah gambaran Nafs kita. Tanpa rem pakem (Syariat) dan kemudi yang presisi (Akal sehat) yang dituntun oleh peta perjalanan (Iman), maka tenaga besar mesin itu hanya akan menabrak jurang kehancuran.</p>
+                        </div>
+                    </div>
+
+                    <p><strong>3 Tingkatan Jiwa dalam Al-Qur'an:</strong></p>
+                    <ul class="list-disc pl-5 text-xs sm:text-sm space-y-2 my-2">
+                        <li><strong>An-Nafs Al-Ammārah (QS. Yusuf: 53):</strong> Jiwa kekanak-kanakan yang selalu mendikte manusia pada keburukan, kesombongan, syahwat liar, serta kecanduan kesenangan semu (dunia/medsos).</li>
+                        <li><strong>An-Nafs Al-Lawwāmah (QS. Al-Qiyāmah: 2):</strong> Jiwa hidup yang dipenuhi rasa bersalah. Ketika berbuat noda dosa, hatinya merintih menyesal, segera beristighfar, bertaubat, meskipun masih sering terjatuh kembali.</li>
+                        <li><strong>An-Nafs Al-Muṭma'innah (QS. Al-Fajr: 27-30):</strong> Jiwa dewasa yang sejuk dan tenang. Gelombang takdir kaya-miskin, senang-sakit tidak menggoyahkan kedamaian dasar hatinya karena ia ridha kepada ketetapan Rabbnya.</li>
+                    </ul>
+                `
+            },
+            {
+                num: 8,
+                title: "Fitrah Perempuan & Ibu: Madrasah Utama Peradaban",
+                readTime: "4 mnt baca",
+                quote: `"Peradaban tidak dimulai di gedung-gedung megah, tetapi di rumah-rumah yang dipenuhi iman."`,
+                prompt: "Jika anak atau generasi muda meniru habis seluruh kebiasaan harian Anda hari ini tanpa sensor, apakah Anda akan merasa bangga atau cemas?",
+                content: `
+                    <p class="font-semibold text-emerald-800 dark:text-emerald-400">"Jika Anda ingin menghancurkan masa depan suatu bangsa, sibukkan para ibunya dengan obsesi materi lahiriah dan jauhkan mereka dari mendidik anak-anak."</p>
+                    <p>Islam menempatkan ibu pada kedudukan mulia tiada tanding (disebut tiga kali lebih utama dari ayah dalam hadis berbakti) karena peran raksasanya sebagai <strong>Madrasah pertama (Al-Madrasatul Ula)</strong> bagi generasi penerus.</p>
+                    
+                    <div class="bg-slate-50 dark:bg-slate-950 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 flex gap-3 my-4">
+                        <div class="text-2xl text-emerald-600"><i class="fa-solid fa-mirror"></i></div>
+                        <div>
+                            <strong class="block text-xs uppercase text-slate-505">Analogi Cermin Jiwa</strong>
+                            <p class="text-xs mt-1">Anak adalah cermin murni yang merekam 24 jam keteladanan orang tua secara visual. Jika cermin memantulkan kemarahan, gawai tiada henti, dan ucapan kasar, itu karena cermin sekadar menduplikasi objek di hadapannya.</p>
+                        </div>
+                    </div>
+
+                    <p>Perspektif Islam kaffah mengatasi perdebatan sempit modern tentang "Working Mom vs Stay-at-Home Mom". Islam tidak mengharamkan wanita berkarya dan berikhtiar sosial (seperti Ibunda Khadijah yang berdagang atau Syifa binti Abdullah yang menjadi penasihat pasar), namun Islam meletakkan batasan mutlak bahwa amanah pengokohan rumah tangga tidak boleh dikorbankan demi kepuasan nafsu duniawi semata.</p>
+                `
+            },
+            {
+                num: 9,
+                title: "Mengapa Kita Tidak Pernah Cukup? Rahasia Qana'ah",
+                readTime: "4 mnt baca",
+                quote: `"Qana'ah bukan berhenti berusaha. Qana'ah adalah berhenti menggantungkan kebahagiaan kepada dunia."`,
+                prompt: "Tuliskan 3 nikmat sederhana tak ternilai yang Anda miliki hari ini (contoh: nafas bebas, air bersih, mata sehat) yang sering terlupakan untuk disyukuri.",
+                content: `
+                    <p class="font-semibold text-emerald-800 dark:text-emerald-400">Dunia modern digerakkan oleh industri yang memaksakan ilusi kekurangan agar manusia terus mengonsumsi benda-benda konsumtif tak berguna.</p>
+                    <p>Media sosial bertindak sebagai mesin pembanding raksasa 24 jam. Dalam 5 menit berselancar di beranda ponsel, kita dipaksa membandingkan hidup kita dengan puncak liburan, mobil baru, dan kekayaan orang lain hingga kebahagiaan kita dirampas seketika.</p>
+                    
+                    <div class="bg-slate-50 dark:bg-slate-950 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 flex gap-3 my-4">
+                        <div class="text-2xl text-emerald-600"><i class="fa-solid fa-glass-water-droplet"></i></div>
+                        <div>
+                            <strong class="block text-xs uppercase text-slate-505">Analogi Gelas Bocor</strong>
+                            <p class="text-xs mt-1">Sebanyak apa pun air murni dituangkan ke dalam gelas, ia tidak akan pernah terisi penuh jika dasarnya berlubang bocor oleh kedengkian, kerakusan, dan kesombongan duniawi. Yang wajib kita perbaiki bukanlah volume airnya (jumlah harta), melainkan menambal dasarnya (gelas jiwa).</p>
+                        </div>
+                    </div>
+
+                    <p>Qana'ah adalah pertahanan terbaik dari virus FOMO (Fear of Missing Out). Qana'ah bermakna ikhtiar menjemput rezeki sekuat tenaga secara halal, lalu memercayakan pembagian rezeki kepada kebijakan takdir Allah seraya menjaga agar hati tidak terikat budak oleh gemerlap benda mati tersebut.</p>
+                `
+            },
+            {
+                num: 10,
+                title: "Menemukan Fitrah: Islam Kaffah sebagai Peta Kebahagiaan",
+                readTime: "5 mnt baca",
+                quote: `"Islam bukan sekadar agama yang dipelajari sebagai materi kajian, tetapi satu-satunya cara hidup utuh yang dijalani."`,
+                prompt: "Dari 10 prinsip dasar Islam Kaffah yang dibahas, prinsip nomor berapa yang paling menantang dan butuh perjuangan paling berat bagi Anda?",
+                content: `
+                    <p class="font-semibold text-emerald-800 dark:text-emerald-400">"Hidup bukan sekadar siklus biologis monoton—lahir, sekolah, kerja keras, kawin, menua, lalu punah. Hidup adalah safari kepulangan kembali menuju Allah."</p>
+                    <p>Islam Kaffah (Menyeluruh) meruntuhkan sekularisme yang memisahkan dunia dan akhirat. Di dalam peta Islam, seluruh aktivitas profan (bekerja mencari nafkah, mengajar, memasak hidangan, berdagang) bertransformasi menjadi ibadah sakral berlimpah pahala selama dilandasi niat taqarrub karena Allah ﷻ.</p>
+                    <p><strong>10 Prinsip Agung Hidup Muslim Kaffah:</strong></p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs my-3 bg-slate-50 dark:bg-slate-950 p-4 rounded-2xl">
+                        <span>1. Allah tujuan mutlak hidup</span>
+                        <span>2. Ilmu wajib melahirkan amal nyata</span>
+                        <span>3. Tauhid sebagai pilar fondasi</span>
+                        <span>4. Ibadah sebagai asupan utama ruh</span>
+                        <span>5. Akhlak wajah keimanan sejati</span>
+                        <span>6. Menjadi sebaik-baik maslahat sosial</span>
+                        <span>7. Rumah tangga adalah basis pertama</span>
+                        <span>8. Empati & ukhuwah terhadap umat</span>
+                        <span>9. Syukur & Qana'ah pasak ketenangan</span>
+                        <span>10. Akhirat adalah garis finis</span>
+                    </div>
+                `
+            },
+            {
+                num: 11,
+                title: "Roadmap Hijrah: Mengatur Sistem Perubahan Konsisten",
+                readTime: "4 mnt baca",
+                quote: `"Jangan pernah takut berjalan sangat lambat merangkak menuju Allah. Yang mematikan adalah saat engkau memutuskan berhenti berjalan."`,
+                prompt: "Tuliskan satu amalan harian sangat kecil (misal: tilawah 1 halaman per hari atau sedekah subuh Rp.2000) yang berkomitmen Anda lakukan istiqamah mulai hari ini!",
+                content: `
+                    <p class="font-semibold text-emerald-800 dark:text-emerald-400">"Hijrah emosional tanpa pembentukan sistem kedisiplinan harian ibarat menyalakan api kembang api; menyala terang sesaat lalu padam gulita seketika."</p>
+                    <p>Allah menciptakan alam semesta melalui proses bertahap untuk mendidik manusia. Rasulullah ﷺ membina generasi emas sahabat dimulai dengan pembinaan akidah yang mapan selama belasan tahun di Makkah sebelum menegakkan struktur hukum dan tata sosial kenegaraan di Madinah.</p>
+                    
+                    <p><strong>5 Tahapan Sistemik Roadmap Hijrah Konsisten:</strong></p>
+                    <div class="space-y-2 text-xs sm:text-sm pl-4 border-l-2 border-emerald-500 my-4">
+                        <p><strong>Tahap 1: Hubungan Khaliq</strong> &rarr; Fokus meluruskan tauhid, menjaga shalat fardhu awal waktu berjamaah, tilawah rutin, dan dzikir penjaga jiwa.</p>
+                        <p><strong>Tahap 2: Manajemen Diri</strong> &rarr; Melatih rem emosi marah, menyaring lisan dari ghibah, dan mendisplinkan diri memangkas waktu sia-sia di medsos.</p>
+                        <p><strong>Tahap 3: Kokohkan Rumah</strong> &rarr; Membiasakan shalat berjamaah keluarga, makan bersama tanpa gawai, dan diskusi adab yang hangat.</p>
+                        <p><strong>Tahap 4: Teberkan Manfaat</strong> &rarr; Secara aktif membantu kesusahan kerabat dekat dan tetangga sekitar tanpa pamrih duniawi.</p>
+                        <p><strong>Tahap 5: Jihad Kontribusi</strong> &rarr; Memikirkan serta menyalurkan bantuan, pikiran, atau doa demi kebangkitan kejayaan umat Islam global.</p>
+                    </div>
+                    <p>Rasulullah ﷺ bersabda: <em>"Amalan yang paling dicintai oleh Allah adalah amalan yang kontinu (istiqamah) meskipun porsinya sangat sedikit."</em></p>
+                `
+            }
+        ];
+
+        // 10 Comprehensive High Quality Interactive Quiz questions based on FITRAH.txt
+        const quizData = [
+            {
+                question: "Berdasarkan materi Bagian 1, apa kesalahan fatal manusia modern yang diilustrasikan dengan analogi mobil ber-GPS mewah?",
+                answerOptions: [
+                    { text: "Bekerja keras tanpa memiliki teknologi pendukung yang canggih.", isCorrect: false, rationale: "Teknologi bukanlah masalah utama, melainkan ketidaktahuan akan arah tujuan hidup." },
+                    { text: "Sibuk melaju melakukan aktivitas harian namun buta arah tujuan hidup sesungguhnya.", isCorrect: true, rationale: "Analogi GPS menggambarkan manusia yang sibuk melaju (sekolah, kuliah, karir) tanpa menetapkan tujuan akhirat/kembali kepada Allah." },
+                    { text: "Membeli barang mewah di luar kemampuan keuangan pribadinya.", isCorrect: false, rationale: "Walaupun konsumtivisme dibahas di bab lain, ini bukan poin utama analogi GPS." },
+                    { text: "Kurang fokus dalam berikhtiar mencari rezeki yang melimpah.", isCorrect: false, rationale: "Materi justru menekankan bahwa rezeki berlimpah bukan tolok ukur sukses yang sejati." }
+                ],
+                hint: "Pikirkan tentang pentingnya menetapkan titik akhir perjalanan sebelum mulai mengemudi."
+            },
+            {
+                question: "Apakah makna filosofis yang tepat dari 'Anak lahir di atas fitrah laksana tanah yang subur'?",
+                answerOptions: [
+                    { text: "Anak lahir dengan jiwa netral dan bersih tanpa ada bakat apa pun.", isCorrect: false, rationale: "Jiwa anak memiliki kesiapan bawaan menerima tauhid, bukan kosong tanpa potensi." },
+                    { text: "Anak lahir otomatis menjadi anak shalih tanpa perlu pendidikan agama.", isCorrect: false, rationale: "Potensi fitrah tetap membutuhkan tarbiyah agar tidak ditumbuhi rumput liar dosa." },
+                    { text: "Anak lahir membawa potensi kesalehan yang siap tumbuh subur jika dipupuk dengan kebaikan Islam kaffah.", isCorrect: true, rationale: "Sifat tanah subur siap menumbuhkan padi kesalehan jika ditanam dengan benar, dan akan ditumbuhi rumput liar jika ditelantarkan." },
+                    { text: "Anak lahir membawa sifat bawaan jahat dari leluhurnya.", isCorrect: false, rationale: "Islam menentang konsep dosa turunan; anak terlahir suci membawa fitrah tauhid." }
+                ],
+                hint: "Pikirkan apa yang tumbuh jika tanah yang subur didiamkan tanpa dirawat."
+            },
+            {
+                question: "Dalam Bagian 3, mengapa musibah cedera fisik Teh Konit disebut sebagai cara Allah 'menyelamatkan' hambanya?",
+                answerOptions: [
+                    { text: "Karena cedera tersebut membuatnya mendapatkan kompensasi materi melimpah.", isCorrect: false, rationale: "Duniawi bukan orientasi utama dari hidayah Allah." },
+                    { text: "Sebab cedera menghentikan langkahnya yang menjauh dari dakwah dan mengarahkannya fokus mempelajari Sirah Nabawiyah.", isCorrect: true, rationale: "Allah membelokkan jalannya dari ambisi organisasi pecinta alam menuju dakwah mulia melalui wasilah sakit cedera." },
+                    { text: "Karena ia bisa membuktikan kemampuannya sembuh tanpa bantuan dokter.", isCorrect: false, rationale: "Ikhtiar medis tetap dianjurkan dan bukan itu hikmah pembelokan jalan takdir." },
+                    { text: "Karena dengan sakit ia bisa pensiun dini dari pekerjaan berat.", isCorrect: false, rationale: "Sakitnya justru melahirkan karya-karya dakwah produktif yang lebih besar." }
+                ],
+                hint: "Ingatlah analogi jalan ditutup demi menghindari longsor di depan."
+            },
+            {
+                question: "Mengapa mempelajari Sirah Nabawiyah harus didekati sebagai 'GPS Kehidupan', bukan sekadar museum sejarah?",
+                answerOptions: [
+                    { text: "Agar umat dapat menghafal nama perang dan tanggal kejadian secara presisi.", isCorrect: false, rationale: "Hanya menghafal kronologis tanpa tadabbur tidak akan menyelesaikan krisis jiwa." },
+                    { text: "Agar kita dapat menemukan kesamaan geografis wilayah timur tengah.", isCorrect: false, rationale: "Sisi geografis hanyalah unsur latar belaka, bukan hikmah inti tarbiyah." },
+                    { text: "Sebab sirah mengandung solusi teladan nyata dari Rasulullah ﷺ untuk setiap akar masalah manusia di segala zaman.", isCorrect: true, rationale: "Setiap kisah dalam hidup Nabi ﷺ adalah instrumen aplikatif untuk menjawab kecemasan, pengkhianatan, duka, maupun kepemimpinan modern." },
+                    { text: "Untuk membandingkan keunggulan peradaban kuno dengan modern.", isCorrect: false, rationale: "Sirah berfungsi sebagai panduan hidup, bukan sekadar kajian komparatif sejarah." }
+                ],
+                hint: "Pikirkan bagaimana alat-alat dalam kotak perkakas digunakan berdasarkan masalah spesifik."
+            },
+            {
+                question: "Bagaimanakah analogi Tata Surya menjelaskan pergeseran fokus hidup dari berpusat pada 'Ego' menjadi berpusat pada 'Allah'?",
+                answerOptions: [
+                    { text: "Menjelaskan bahwa manusia harus hidup mandiri tanpa ketergantungan sosial.", isCorrect: false, rationale: "Ukhuwah kaffah membuktikan bahwa mukmin saling membutuhkan." },
+                    { text: "Menegaskan bahwa bumi adalah pusat alam semesta yang tidak bergerak.", isCorrect: false, rationale: "Ini adalah teori sains kuno yang salah, bukan pelajaran hikmah kaffah." },
+                    { text: "Ketika Allah menjadi pusat orientasi hidup, seluruh aktivitas dunia (keluarga, karir, harta) akan mengorbit seimbang tanpa tabrakan ego.", isCorrect: true, rationale: "Keteraturan planet terjadi karena berputar mengitari satu matahari. Mukmin yang menempatkan Allah di pusat hati akan menemukan harmoni hidup." },
+                    { text: "Menunjukkan bahwa mengejar dunia sama sulitnya dengan menggapai bintang di langit.", isCorrect: false, rationale: "Dunia sangat mudah diraih, namun jika dijadikan tujuan akan melelahkan ruh." }
+                ],
+                hint: "Bayangkan kekacauan galaksi jika semua planet ingin menjadi matahari."
+            },
+            {
+                question: "Manakah pasangan pilar Pohon Fitrah dengan konsep syariatnya yang BENAR?",
+                answerOptions: [
+                    { text: "Akar = Akhlak Mulia, Batang = Aqidah, Daun = Manfaat", isCorrect: false, rationale: "Akar seharusnya adalah Aqidah karena ia tidak terlihat tetapi menopang seluruh struktur." },
+                    { text: "Akar = Aqidah (Tauhid), Batang = Ibadah, Cabang/Daun = Akhlak, Buah = Manfaat bagi Umat", isCorrect: true, rationale: "Aqidah adalah fondasi tak terlihat (akar), Ibadah penyalur energi (batang), Akhlak penampilan luar yang teduh (daun), dan Manfaat adalah hasil akhir (buah)." },
+                    { text: "Akar = Ibadah, Batang = Manfaat, Daun = Aqidah", isCorrect: false, rationale: "Susunan ini keliru secara hierarki pertumbuhan iman kaffah." },
+                    { text: "Akar = Manfaat, Batang = Akhlak, Daun = Ibadah, Buah = Aqidah", isCorrect: false, rationale: "Aqidah tidak pernah diletakkan di akhir; ia harus menjadi awal mula segala amal." }
+                ],
+                hint: "Ingatlah organ pohon mana yang tidak terlihat di dalam tanah, dan mana hasil manis yang dinikmati orang lain."
+            },
+            {
+                question: "Apakah tanda utama bahwa Nafs Al-Lawwāmah (Jiwa yang menyesali kesalahan) sedang aktif di dalam diri seseorang?",
+                answerOptions: [
+                    { text: "Ia selalu merasa paling suci dibanding orang lain.", isCorrect: false, rationale: "Kesombongan adalah penyakit Nafs Ammarah." },
+                    { text: "Ia melakukan perbuatan dosa dan merasa tenang-tenang saja tanpa beban.", isCorrect: false, rationale: "Merasa biasa saat berdosa adalah tanda hati yang mati/Nafs Ammarah menguasai jiwa." },
+                    { text: "Ketika berbuat salah, hatinya langsung menyesal, gelisah, bertaubat, dan berusaha bangkit memperbaiki dirinya kembali.", isCorrect: true, rationale: "Al-Lawwāmah mencela dirinya sendiri atas dosa, merupakan tanda keimanan dalam hati yang masih hidup." },
+                    { text: "Ia memutuskan untuk tidak bekerja lagi agar terhindar dari maksiat pasar.", isCorrect: false, rationale: "Islam menentang asketisme pasif; Nafs yang sehat justru gigih beramal di masyarakat." }
+                ],
+                hint: "Pikirkan tentang noda hitam kecil di atas baju putih bersih yang segera dicuci."
+            },
+            {
+                question: "Dari materi peran Ibu, mengapa keteladanan visual orang tua jauh lebih kuat membentuk anak dibandingkan ribuan nasihat lisan?",
+                answerOptions: [
+                    { text: "Karena anak tidak memiliki memori jangka panjang untuk mendengarkan.", isCorrect: false, rationale: "Anak memiliki memori kuat, namun keteladananlah yang paling membekas di bawah sadar." },
+                    { text: "Sebab anak bertindak sebagai cermin murni yang menyalin kelakuan harian orang tuanya, bukan sekadar mematuhi ucapan.", isCorrect: true, rationale: "Anak belajar lewat merekam contoh nyata 24 jam. Jika ucapan bertentangan dengan perbuatan, anak akan selalu menduplikasi perbuatan orang tuanya." },
+                    { text: "Karena sekolah formal telah mengambil alih seluruh fungsi edukasi adab.", isCorrect: false, rationale: "Sekolah hanya mengajarkan teori beberapa jam, sedangkan rumah adalah pembentuk karakter utama." },
+                    { text: "Karena nasihat lisan membutuhkan biaya yang mahal untuk diajarkan.", isCorrect: false, rationale: "Nasihat lisan gratis, namun nilainya nol jika orang tua melakukan hal sebaliknya." }
+                ],
+                hint: "Bayangkan anak sebagai sebuah cermin di dinding rumah."
+            },
+            {
+                question: "Menurut materi Bagian 9, apa rahasia agar gelas jiwa kita tidak mengalami kebocoran konstan di tengah terpaan hasrat duniawi?",
+                answerOptions: [
+                    { text: "Dengan terus menambah jumlah harta benda agar kebocoran tertutup.", isCorrect: false, rationale: "Menambah harta ke wadah bocor hanya akan membuang energi; hasrat dunia tidak memiliki batas." },
+                    { text: "Dengan mengisolasi diri sepenuhnya dari internet dan peradaban manusia.", isCorrect: false, rationale: "Solusi kaffah adalah memperkuat pertahanan hati, bukan sekadar kabur dari ujian sosial." },
+                    { text: "Menanamkan rasa Qana'ah, mensyukuri nikmat sekecil apa pun, serta berhenti membandingkan takdir diri dengan orang lain.", isCorrect: true, rationale: "Qana'ah menambal dasar gelas bocor sehingga hati merasa tenteram dan tidak diperbudak tren atau FOMO." },
+                    { text: "Dengan membeli barang yang paling mahal untuk memuaskan ego sesaat.", isCorrect: false, rationale: "Kepuasan konsumsi semu hanyalah air laut yang semakin menambah dahaga haus jiwa." }
+                ],
+                hint: "Pikirkan tentang cara memperbaiki gelas, bukan sekadar menuang air terus-menerus."
+            },
+            {
+                question: "Dalam Bagian 11 tentang Roadmap Hijrah, bagaimanakah cara menjaga keistiqamahan agar tidak lekas padam di tengah jalan?",
+                answerOptions: [
+                    { text: "Melakukan perubahan drastis berskala raksasa dalam waktu satu hari saja.", isCorrect: false, rationale: "Perubahan instan tanpa kesiapan sistemik hampir pasti roboh dalam hitungan hari." },
+                    { text: "Memulai dari amalan sangat kecil namun dijaga konsisten setiap hari dengan disiplin tinggi, ilmu, dan lingkungan yang shalih.", isCorrect: true, rationale: "Amal yang berkelanjutan walau sedikit jauh lebih dicintai Allah daripada luapan emosi sesaat yang lekas padam." },
+                    { text: "Menunggu hingga diri kita suci sempurna tanpa dosa baru mulai beramal.", isCorrect: false, rationale: "Tidak ada manusia sempurna; menunda berbuat baik adalah tipu daya syaitan." },
+                    { text: "Bergantung sepenuhnya pada motivasi video kajian tanpa membuat agenda ibadah harian.", isCorrect: false, rationale: "Motivasi tanpa sistem kedisiplinan tidak akan melahirkan karakter shalih yang kokoh." }
+                ],
+                hint: "Pikirkan sabda Rasulullah ﷺ tentang amalan yang paling dicintai Allah."
+            }
+        ];
+
+        // App state
+        let currentChapter = 1;
+        let readStatus = Array(12).fill(false); // index 0 unused
+        let reflections = Array(12).fill("");
+        let currentQuizIndex = 0;
+        let quizScore = 0;
+        let soundEnabled = true;
+
+        // Dom Elements
+        const dynamicContentArea = document.getElementById("dynamic-content-area");
+        const dynamicQuoteArea = document.getElementById("dynamic-quote-area");
+        const reflectionPrompt = document.getElementById("reflection-prompt");
+        const reflectionInput = document.getElementById("reflection-input");
+        const badgeChapterNum = document.getElementById("badge-chapter-num");
+        const readTimeEst = document.getElementById("read-time-est");
+        const indicatorRatio = document.getElementById("indicator-ratio");
+        
+        // Navigation buttons
+        const prevBtn = document.getElementById("prev-chapter-btn");
+        const nextBtn = document.getElementById("next-chapter-btn");
+        const prevBottomBtn = document.getElementById("prev-chapter-bottom-btn");
+        const nextBottomBtn = document.getElementById("next-chapter-bottom-btn");
+        
+        // Reflection controls
+        const saveReflectionBtn = document.getElementById("save-reflection-btn");
+        const reflectionStatus = document.getElementById("reflection-status");
+
+        // Progress Board DOM
+        const progressChaptersText = document.getElementById("progress-chapters");
+        const progressReflectionsText = document.getElementById("progress-reflections");
+        const progressQuizText = document.getElementById("progress-quiz");
+        const overallStatusText = document.getElementById("overall-status");
+        const visualProgressBar = document.getElementById("visual-progress-bar");
+        const progressAdvice = document.getElementById("progress-advice");
+
+        // Tree interactions
+        const treeExplainBox = document.getElementById("tree-explain-box");
+
+        // Quiz DOM
+        const quizIntroBox = document.getElementById("quiz-intro-box");
+        const quizActiveBox = document.getElementById("quiz-active-box");
+        const quizResultBox = document.getElementById("quiz-result-box");
+        const startQuizBtn = document.getElementById("start-quiz-btn");
+        const qCounter = document.getElementById("quiz-question-counter");
+        const qProgress = document.getElementById("quiz-progress-indicator");
+        const qScore = document.getElementById("quiz-score-indicator");
+        const qText = document.getElementById("quiz-question-text");
+        const qOptions = document.getElementById("quiz-options-wrapper");
+        const qRationaleBox = document.getElementById("quiz-rationale-box");
+        const qRationaleText = document.getElementById("quiz-rationale-text");
+        const qRationaleStatus = document.getElementById("quiz-rational-status");
+        const qNextBtn = document.getElementById("quiz-next-question-btn");
+        const resetQuizBtn = document.getElementById("reset-quiz-btn");
+        const resultScoreNumber = document.getElementById("result-score-number");
+        const resultTitle = document.getElementById("result-title");
+        const resultDescription = document.getElementById("result-description");
+        const resultMedalIcon = document.getElementById("result-medal-icon");
+        const copyCertTextBtn = document.getElementById("copy-cert-text");
+        const certUserNameInput = document.getElementById("cert-user-name");
+
+        // Initialize App
+        window.onload = function() {
+            AudioSynth.init();
+            loadProgress();
+            renderChaptersList();
+            renderChapter(1);
+            setupTheme();
+            setupTreeWidget();
+            setupQuiz();
+            setupSoundToggle();
+            
+            // Set certification date automatically
+            const now = new Date();
+            const months = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+            document.getElementById("cert-date-string").textContent = `${months[now.getMonth()]} ${now.getFullYear()}`;
+        };
+
+        // Load progress from LocalStorage
+        function loadProgress() {
+            const savedRead = localStorage.getItem("rihlah_read");
+            const savedReflections = localStorage.getItem("rihlah_reflections");
+            const savedScore = localStorage.getItem("rihlah_quiz_score");
+
+            if (savedRead) readStatus = JSON.parse(savedRead);
+            if (savedReflections) reflections = JSON.parse(savedReflections);
+            if (savedScore) {
+                progressQuizText.textContent = savedScore + "%";
+            }
+            updateOverallProgressUI();
+        }
+
+        // Save progress to LocalStorage
+        function saveProgress() {
+            localStorage.setItem("rihlah_read", JSON.stringify(readStatus));
+            localStorage.setItem("rihlah_reflections", JSON.stringify(reflections));
+            updateOverallProgressUI();
+        }
+
+        // Setup theme (dark/light) toggle
+        function setupTheme() {
+            const toggleDarkBtn = document.getElementById("toggle-dark");
+            const themeIcon = document.getElementById("theme-icon");
+            
+            // Check previous selection
+            if (localStorage.getItem("theme") === "dark" || (!localStorage.getItem("theme") && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+                themeIcon.className = "fa-solid fa-sun text-md text-amber-400";
+            } else {
+                document.documentElement.classList.remove('dark');
+                themeIcon.className = "fa-solid fa-moon text-md text-slate-500";
+            }
+
+            toggleDarkBtn.onclick = function() {
+                AudioSynth.playClick();
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem("theme", "light");
+                    themeIcon.className = "fa-solid fa-moon text-md text-slate-500";
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem("theme", "dark");
+                    themeIcon.className = "fa-solid fa-sun text-md text-amber-400";
+                }
+            };
+        }
+
+        // Sound controller
+        function setupSoundToggle() {
+            const toggleSoundBtn = document.getElementById("toggle-sound");
+            const soundIcon = document.getElementById("sound-icon");
+
+            toggleSoundBtn.onclick = function() {
+                soundEnabled = !soundEnabled;
+                AudioSynth.enabled = soundEnabled;
+                if (soundEnabled) {
+                    soundIcon.className = "fa-solid fa-volume-high text-md text-emerald-600 dark:text-emerald-400";
+                    AudioSynth.playClick();
+                } else {
+                    soundIcon.className = "fa-solid fa-volume-xmark text-md text-slate-400";
+                }
+            };
+        }
+
+        // Side navigation rendering
+        function renderChaptersList() {
+            const listContainer = document.getElementById("chapters-nav-list");
+            listContainer.innerHTML = "";
+
+            chaptersData.forEach(ch => {
+                const btn = document.createElement("button");
+                btn.id = `nav-ch-${ch.num}`;
+                btn.className = `w-full text-left p-3 rounded-2xl flex items-center justify-between transition-all border text-xs font-semibold ${
+                    ch.num === currentChapter 
+                    ? "bg-emerald-600 text-white border-emerald-600 shadow-md shadow-emerald-600/10" 
+                    : "bg-slate-50 hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 border-slate-150 dark:bg-slate-950 dark:hover:bg-slate-900 dark:border-slate-850 dark:text-slate-350 dark:hover:text-emerald-400"
+                }`;
+
+                const readDot = readStatus[ch.num] 
+                    ? `<i class="fa-solid fa-circle-check text-emerald-500 mr-1.5 dark:text-emerald-400"></i>` 
+                    : `<i class="fa-regular fa-circle text-slate-300 mr-1.5 dark:text-slate-700"></i>`;
+                
+                btn.innerHTML = `
+                    <span class="flex items-center gap-1 overflow-hidden text-ellipsis whitespace-nowrap">
+                        ${readDot} 
+                        <span>Bagian ${ch.num}: ${ch.title}</span>
+                    </span>
+                    <i class="fa-solid fa-chevron-right text-[10px] opacity-70"></i>
+                `;
+
+                btn.onclick = () => {
+                    AudioSynth.playClick();
+                    currentChapter = ch.num;
+                    renderChapter(ch.num);
+                };
+
+                listContainer.appendChild(btn);
+            });
+        }
+
+        // Highlight selected nav item
+        function updateNavHighlight() {
+            chaptersData.forEach(ch => {
+                const btn = document.getElementById(`nav-ch-${ch.num}`);
+                if (!btn) return;
+                
+                const readDot = readStatus[ch.num] 
+                    ? `<i class="fa-solid fa-circle-check text-white mr-1.5 animate-pulse"></i>` 
+                    : `<i class="fa-regular fa-circle text-slate-300 mr-1.5"></i>`;
+
+                const unreadDot = readStatus[ch.num]
+                    ? `<i class="fa-solid fa-circle-check text-emerald-500 mr-1.5"></i>`
+                    : `<i class="fa-regular fa-circle text-slate-300 mr-1.5 dark:text-slate-700"></i>`;
+
+                if (ch.num === currentChapter) {
+                    btn.className = "w-full text-left p-3 rounded-2xl flex items-center justify-between transition-all border text-xs font-semibold bg-emerald-600 text-white border-emerald-600 shadow-md shadow-emerald-600/10";
+                    btn.innerHTML = `
+                        <span class="flex items-center gap-1 overflow-hidden text-ellipsis whitespace-nowrap">
+                            ${readDot} 
+                            <span>Bagian ${ch.num}: ${ch.title}</span>
+                        </span>
+                        <i class="fa-solid fa-chevron-right text-[10px] opacity-70"></i>
+                    `;
+                } else {
+                    btn.className = "w-full text-left p-3 rounded-2xl flex items-center justify-between transition-all border text-xs font-semibold bg-slate-50 hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 border-slate-150 dark:bg-slate-950 dark:hover:bg-slate-900 dark:border-slate-850 dark:text-slate-350 dark:hover:text-emerald-400";
+                    btn.innerHTML = `
+                        <span class="flex items-center gap-1 overflow-hidden text-ellipsis whitespace-nowrap">
+                            ${unreadDot} 
+                            <span>Bagian ${ch.num}: ${ch.title}</span>
+                        </span>
+                        <i class="fa-solid fa-chevron-right text-[10px] opacity-70"></i>
+                    `;
+                }
+            });
+        }
+
+        // Main Chapter Renderer
+        function renderChapter(num) {
+            const ch = chaptersData.find(c => c.num === num);
+            if (!ch) return;
+
+            // Trigger animation
+            dynamicContentArea.classList.remove("fade-enter-active");
+            dynamicContentArea.classList.add("fade-enter");
+
+            setTimeout(() => {
+                badgeChapterNum.textContent = `BAGIAN ${ch.num}`;
+                readTimeEst.textContent = ch.readTime;
+                indicatorRatio.textContent = `${ch.num} / 11`;
+                
+                dynamicContentArea.innerHTML = `
+                    <h3 class="serif-title text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-4 leading-tight">${ch.title}</h3>
+                    ${ch.content}
+                `;
+                
+                dynamicQuoteArea.innerHTML = `
+                    <div class="flex items-start gap-2">
+                        <i class="fa-solid fa-quote-left text-emerald-500 text-lg opacity-60 mt-1"></i>
+                        <p class="italic font-medium text-slate-600 dark:text-slate-350 text-xs sm:text-sm leading-relaxed">${ch.quote}</p>
+                    </div>
+                `;
+
+                reflectionPrompt.innerHTML = `<strong>Tadabburi Hati:</strong> ${ch.prompt}`;
+                reflectionInput.value = reflections[ch.num] || "";
+                
+                // Hide success save message instantly
+                reflectionStatus.classList.add("opacity-0");
+
+                // Update active navigation indicators
+                updateNavHighlight();
+
+                // Auto-mark chapter as read once viewed
+                if (!readStatus[ch.num]) {
+                    readStatus[ch.num] = true;
+                    saveProgress();
+                }
+
+                // Smooth scroll dynamic content back up slightly
+                dynamicContentArea.classList.remove("fade-enter");
+                dynamicContentArea.classList.add("fade-enter-active");
+            }, 100);
+        }
+
+        // Action: Save Reflection
+        saveReflectionBtn.onclick = function() {
+            const text = reflectionInput.value.trim();
+            reflections[currentChapter] = text;
+            saveProgress();
+            
+            // Audio Chime
+            AudioSynth.playSuccess();
+            
+            // Visual alert
+            reflectionStatus.classList.remove("opacity-0");
+            showToast("Jurnal Muhasabah", "Refleksi spiritual Anda berhasil disimpan secara aman di browser!");
+        };
+
+        // Navigation actions
+        function goNext() {
+            if (currentChapter < 11) {
+                currentChapter++;
+                AudioSynth.playClick();
+                renderChapter(currentChapter);
+            } else {
+                // If chapter is at last, scroll smoothly to Quiz
+                document.getElementById("section-quiz").scrollIntoView({ behavior: 'smooth' });
+                showToast("Lanjutkan Kuis", "Luar biasa! Anda telah merampungkan 11 Bagian ilmu. Mari uji dengan kuis Fitrah!");
+            }
+        }
+
+        function goPrev() {
+            if (currentChapter > 1) {
+                currentChapter--;
+                AudioSynth.playClick();
+                renderChapter(currentChapter);
+            }
+        }
+
+        prevBtn.onclick = goPrev;
+        nextBtn.onclick = goNext;
+        prevBottomBtn.onclick = goPrev;
+        nextBottomBtn.onclick = goNext;
+
+        // Visual progress tracker recalculator
+        function updateOverallProgressUI() {
+            const chaptersReadCount = readStatus.filter(Boolean).length;
+            const reflectionsCount = reflections.filter(r => r.trim().length > 0).length;
+
+            progressChaptersText.textContent = `${chaptersReadCount}/11`;
+            progressReflectionsText.textContent = `${reflectionsCount}/11`;
+
+            // Calculate percentage
+            const pct = Math.round(((chaptersReadCount + reflectionsCount) / 22) * 100);
+            visualProgressBar.style.width = `${pct}%`;
+
+            // Set encouragement advice
+            if (pct === 0) {
+                progressAdvice.textContent = "Langkah awal selalu yang tersulit. Mulailah membuka Bagian 1 untuk meluruskan tujuan hidup!";
+                overallStatusText.textContent = "Mulai";
+            } else if (pct < 40) {
+                progressAdvice.textContent = "Bagus! Anda sedang membangun pondasi aqidah. Teruskan membaca dan mengisi muhasabah.";
+                overallStatusText.textContent = "Akar";
+            } else if (pct < 80) {
+                progressAdvice.textContent = "Luar biasa! Pohon Fitrah Anda kini mulai bercabang dan berdaun rimbun akhlak.";
+                overallStatusText.textContent = "Tumbuh";
+            } else if (pct < 100) {
+                progressAdvice.textContent = "Tinggal sedikit lagi! Sempurnakan seluruh materi dan ikuti Kuis Fitrah.";
+                overallStatusText.textContent = "Ranum";
+            } else {
+                progressAdvice.textContent = "Barakallahu Fiikum! Anda telah menyelesaikan seluruh rute rihlah modul Fitrah.";
+                overallStatusText.textContent = "Kaffah";
+            }
+        }
+
+        // Tree Widget Interactive Area
+        function setupTreeWidget() {
+            const rootBtn = document.getElementById("tree-roots-btn");
+            const trunkBtn = document.getElementById("tree-trunk-btn");
+            const leavesBtn = document.getElementById("tree-leaves-btn");
+            const fruitBtn = document.getElementById("tree-fruit-btn");
+
+            const showTreeExplain = (title, icon, desc, colorClass) => {
+                AudioSynth.playClick();
+                treeExplainBox.innerHTML = `
+                    <p class="text-xs font-bold ${colorClass} flex items-center gap-1">
+                        <i class="${icon}"></i> ${title}
+                    </p>
+                    <p class="text-[11px] text-slate-750 dark:text-slate-350 mt-1 leading-relaxed">
+                        ${desc}
+                    </p>
+                `;
+            };
+
+            rootBtn.onclick = () => showTreeExplain(
+                "AKAR: AQIDAH & TAUHID", 
+                "fa-solid fa-shuttle-space", 
+                "Akar aqidah tertanam kokoh tersembunyi di dalam dada. Ia menyerap nutrisi kebenaran ilahi dan menjaga jiwa tidak goyah saat badai musibah maupun angin fitnah menerpa hidup kita.",
+                "text-slate-700 dark:text-slate-350"
+            );
+
+            trunkBtn.onclick = () => showTreeExplain(
+                "BATANG: IBADAH & SYARIAT", 
+                "fa-solid fa-cubes", 
+                "Batang ibadah (Shalat fardhu, tilawah, dzikir) menyalurkan energi suci aqidah menuju amal luar. Tanpa batang kokoh, nutrisi iman tidak akan pernah melahirkan akhlak menawan.",
+                "text-amber-700 dark:text-amber-400"
+            );
+
+            leavesBtn.onclick = () => showTreeExplain(
+                "DAUN: AKHLAK MULIA", 
+                "fa-solid fa-leaf", 
+                "Daun rimbun melambangkan kesejukan akhlak (senyum ramah, kejujuran lisan, kerendahan hati). Keberadaan akhlak teduh membuat manusia nyaman berteduh di dekat Anda.",
+                "text-green-700 dark:text-green-450"
+            );
+
+            fruitBtn.onclick = () => showTreeExplain(
+                "BUAH: MANFAAT BAGI UMAT", 
+                "fa-solid fa-apple-whole", 
+                "Buah adalah kontribusi maslahat kaffah Anda untuk dinikmati makhluk lain. Mukmin yang subur bertumbuh, melahirkan anak saleh, menyebarkan ilmu, dan memikirkan kemajuan umat Islam.",
+                "text-red-700 dark:text-red-400"
+            );
+        }
+
+        // Quiz Functional Setup
+        function setupQuiz() {
+            startQuizBtn.onclick = function() {
+                AudioSynth.playClick();
+                quizIntroBox.classList.add("hidden");
+                quizActiveBox.classList.remove("hidden");
+                currentQuizIndex = 0;
+                quizScore = 0;
+                loadQuizQuestion();
+            };
+
+            qNextBtn.onclick = function() {
+                AudioSynth.playClick();
+                currentQuizIndex++;
+                if (currentQuizIndex < quizData.length) {
+                    loadQuizQuestion();
+                } else {
+                    finishQuiz();
+                }
+            };
+
+            resetQuizBtn.onclick = function() {
+                AudioSynth.playClick();
+                quizResultBox.classList.add("hidden");
+                quizIntroBox.classList.remove("hidden");
+            };
+
+            copyCertTextBtn.onclick = function() {
+                AudioSynth.playSuccess();
+                const userName = certUserNameInput.value.trim() || "[Nama Lengkap Anda]";
+                const textToCopy = `=====================================\n     SYAHADAH AT-TASHDID (SERTIFIKAT DIGITAL)\n=====================================\n\nDiberikan secara terhormat kepada pembelajar sejati:\n👑 ${userName.toUpperCase()} 👑\n\nTelah bersungguh-sungguh mentadabburi materi Modul\n"Rihlah Fitrah Hidup: Menuju Allah Kaffah"\ndan lulus ujian kuis dengan Skor Akhir: ${quizScore}/100.\n\nSemoga istiqamah meretas jalan hijrah kaffah.\nSistem Edukasi Rihlah Fitrah Digital | ${new Date().toLocaleDateString('id-ID')}`;
+                
+                // Copy to clipboard via legacy approach as mandated
+                const textarea = document.createElement("textarea");
+                textarea.value = textToCopy;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+
+                showToast("Syahadah Disalin", "Teks sertifikat keberhasilan kaffah Anda telah disalin ke clipboard!");
+            };
+        }
+
+        // Load Quiz Question Data
+        function loadQuizQuestion() {
+            const q = quizData[currentQuizIndex];
+            qCounter.textContent = `PERTANYAAN ${currentQuizIndex + 1} DARI ${quizData.length}`;
+            qProgress.style.width = `${((currentQuizIndex + 1) / quizData.length) * 100}%`;
+            qScore.textContent = `Skor: ${quizScore}`;
+            
+            qText.textContent = q.question;
+            qRationaleBox.classList.add("hidden");
+            qNextBtn.disabled = true;
+            qNextBtn.className = "w-full sm:w-auto bg-slate-200 dark:bg-slate-800 text-slate-500 dark:text-slate-400 disabled:opacity-50 px-6 py-3 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1";
+
+            // Render options inside buttons
+            qOptions.innerHTML = "";
+            q.answerOptions.forEach((opt, idx) => {
+                const btn = document.createElement("button");
+                btn.className = "w-full text-left p-4 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-emerald-500 hover:bg-emerald-50/20 text-xs sm:text-sm font-semibold transition-all duration-200 flex items-start gap-3 text-slate-700 dark:text-slate-350 dark:hover:text-emerald-400 bg-white dark:bg-slate-900";
+                btn.innerHTML = `
+                    <span class="flex items-center justify-center h-5 w-5 rounded-full border border-slate-300 dark:border-slate-700 text-[10px] shrink-0 font-bold bg-slate-50 dark:bg-slate-950">${String.fromCharCode(65 + idx)}</span>
+                    <span class="leading-relaxed">${opt.text}</span>
+                `;
+                
+                btn.onclick = () => selectOption(btn, opt);
+                qOptions.appendChild(btn);
+            });
+        }
+
+        // Handle option selection
+        function selectOption(clickedBtn, selectedOpt) {
+            const q = quizData[currentQuizIndex];
+            
+            // Disable all options buttons after choice
+            const buttons = qOptions.querySelectorAll("button");
+            buttons.forEach(btn => btn.disabled = true);
+
+            const isCorrect = selectedOpt.isCorrect;
+
+            if (isCorrect) {
+                AudioSynth.playSuccess();
+                quizScore += 10;
+                clickedBtn.classList.remove("border-slate-200", "dark:border-slate-800");
+                clickedBtn.classList.add("border-emerald-500", "bg-emerald-100/50", "dark:bg-emerald-950/30", "text-emerald-850", "dark:text-emerald-400");
+                qRationaleStatus.className = "flex items-center gap-2 text-xs font-bold text-emerald-600 dark:text-emerald-400";
+                qRationaleStatus.innerHTML = `<i class="fa-solid fa-circle-check"></i> Jawaban Benar!`;
+            } else {
+                AudioSynth.playError();
+                clickedBtn.classList.remove("border-slate-200", "dark:border-slate-800");
+                clickedBtn.classList.add("border-red-500", "bg-red-100/40", "dark:bg-red-950/30", "text-red-800", "dark:text-red-400");
+                
+                // Highlight correct one also
+                const correctIdx = q.answerOptions.findIndex(o => o.isCorrect);
+                if (correctIdx !== -1) {
+                    buttons[correctIdx].classList.add("border-emerald-500", "bg-emerald-100/50", "dark:bg-emerald-950/30", "text-emerald-850", "dark:text-emerald-400");
+                }
+                
+                qRationaleStatus.className = "flex items-center gap-2 text-xs font-bold text-red-600 dark:text-red-400";
+                qRationaleStatus.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> Jawaban Kurang Tepat!`;
+            }
+
+            // Render explanation/rationale text
+            qRationaleText.textContent = selectedOpt.rationale;
+            qRationaleBox.classList.remove("hidden");
+
+            // Enable next button
+            qNextBtn.disabled = false;
+            qNextBtn.className = "w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1 shadow-md shadow-emerald-600/10";
+            qScore.textContent = `Skor: ${quizScore}`;
+        }
+
+        // Wrap up the quiz and display the results
+        function finishQuiz() {
+            AudioSynth.playWin();
+            quizActiveBox.classList.add("hidden");
+            quizResultBox.classList.remove("hidden");
+
+            resultScoreNumber.textContent = `${quizScore} / 100`;
+            localStorage.setItem("rihlah_quiz_score", quizScore);
+            progressQuizText.textContent = quizScore + "%";
+
+            if (quizScore >= 90) {
+                resultMedalIcon.innerHTML = `<i class="fa-solid fa-crown text-amber-500 text-5xl"></i>`;
+                resultTitle.textContent = "Barakallahu Fiikum, Pembelajar Ulung!";
+                resultDescription.textContent = "Pemahaman Anda terhadap konsep fitrah hidup kaffah sangat luar biasa dan mendalam. Teruskan melatih jiwa agar istiqamah.";
+            } else if (quizScore >= 70) {
+                resultMedalIcon.innerHTML = `<i class="fa-solid fa-award text-slate-450 text-5xl"></i>`;
+                resultTitle.textContent = "Masya Allah, Anda Lulus Terpuji!";
+                resultDescription.textContent = "Anda memahami materi dengan sangat baik. Coba praktikkan ilmu yang telah diserap ini dalam kehidupan sehari-hari.";
+            } else {
+                resultMedalIcon.innerHTML = `<i class="fa-solid fa-circle-exclamation text-slate-500 text-5xl"></i>`;
+                resultTitle.textContent = "Tetap Semangat, Evaluasi Ilmu!";
+                resultDescription.textContent = "Jangan berkecil hati. Anda dapat membaca ulang bab-bab materi di atas dan mengulangi kuis ini kapan saja.";
+            }
+        }
+
+        // Custom Toast system
+        function showToast(title, message) {
+            const toast = document.getElementById("toast-modal");
+            document.getElementById("toast-title").textContent = title;
+            document.getElementById("toast-message").textContent = message;
+            
+            toast.classList.remove("translate-y-24", "opacity-0");
+            
+            setTimeout(() => {
+                toast.classList.add("translate-y-24", "opacity-0");
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
